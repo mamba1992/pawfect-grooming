@@ -1,0 +1,83 @@
+{
+  "business": {
+    "name": "Pawfect Grooming Studio",
+    "tagline": "Premium Dog Grooming",
+    "logo_emoji": "🐾",
+    "background_image_url": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1800&auto=format&fit=crop&q=80",
+    "hero": {
+      "heading": "Your Pup Deserves to Look Pawfect",
+      "subheading": "Professional, gentle grooming services tailored to your furry best friend. We treat every dog like our own.",
+      "cta_primary": "Book an Appointment",
+      "cta_secondary": "See Our Services",
+      "stats": [
+        { "number": "1,200+", "label": "Happy Pups Groomed" },
+        { "number": "5★",     "label": "Average Rating"     },
+        { "number": "6 yrs",  "label": "Of Experience"      }
+      ]
+    },
+    "about": {
+      "heading": "A Salon Built with Love & Care",
+      "description_1": "At Pawfect Grooming Studio, we believe every dog deserves to feel fresh, clean, and beautiful. Our experienced groomers treat every pup with patience, kindness, and expert care — because happy dogs make happy owners.",
+      "description_2": "We use only pet-safe, eco-friendly products and keep our studio calm and stress-free so your furry friend always leaves with a wagging tail.",
+      "image_url": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&auto=format&fit=crop&q=80",
+      "image_badge_emoji": "🏆",
+      "image_badge_title": "Top Rated",
+      "image_badge_subtitle": "Studio in Town",
+      "features": [
+        { "icon": "✅", "text": "Certified & experienced groomers"          },
+        { "icon": "🌿", "text": "Pet-safe, eco-friendly products only"       },
+        { "icon": "🏠", "text": "Calm, stress-free studio environment"       },
+        { "icon": "❤️", "text": "Personalized care for every breed"          }
+      ],
+      "cta": "Book an Appointment"
+    },
+    "services": [
+      {
+        "icon":        "🛁",
+        "title":       "Bath & Blow Dry",
+        "description": "A thorough, relaxing bath with premium shampoo and conditioner, followed by a gentle blow-dry that leaves your dog's coat soft and shiny.",
+        "price":       "$35",
+        "unit":        "/ session"
+      },
+      {
+        "icon":        "✂️",
+        "title":       "Haircut & Styling",
+        "description": "Breed-specific cuts or custom styles crafted by our expert groomers to make your pup look runway-ready every time.",
+        "price":       "$55",
+        "unit":        "/ session"
+      },
+      {
+        "icon":        "🐾",
+        "title":       "Nail Trimming",
+        "description": "Gentle and precise nail clipping to keep your dog comfortable and protect your floors. Includes a soothing paw massage.",
+        "price":       "$18",
+        "unit":        "/ session"
+      },
+      {
+        "icon":        "👂",
+        "title":       "Ear Cleaning",
+        "description": "Safe and thorough ear cleaning to prevent infections and keep your pup's ears healthy, fresh, and irritation-free.",
+        "price":       "$15",
+        "unit":        "/ session"
+      }
+    ],
+    "why_us": [
+      { "emoji": "🐕", "title": "Breed-Specific Care",    "description": "Every breed is different. We customize our approach for your dog's unique coat and temperament."                       },
+      { "emoji": "🧴", "title": "Safe Products Only",     "description": "We use gentle, toxin-free, vet-approved shampoos and conditioners suitable for all skin types."                        },
+      { "emoji": "⏰", "title": "Flexible Scheduling",    "description": "We work around your schedule with morning, afternoon, and weekend slots available."                                    },
+      { "emoji": "📱", "title": "Progress Updates",       "description": "We send you cute photos and updates while your pup is getting pampered in our studio."                                  },
+      { "emoji": "💰", "title": "Transparent Pricing",    "description": "No hidden fees, ever. Flat, honest pricing so you always know exactly what to expect."                                  },
+      { "emoji": "🏅", "title": "Certified Groomers",     "description": "All our staff are professionally certified with years of hands-on grooming experience."                                 }
+    ],
+    "contact": {
+      "heading":      "Book an Appointment",
+      "subheading":   "Ready to give your pup some well-deserved pampering? Fill in the form and we'll confirm your slot within 24 hours!",
+      "address":      "42 Bark Street, Dogwood Hills",
+      "phone":        "(555) 123-PAWS",
+      "email":        "hello@pawfectgrooming.com",
+      "hours":        "Mon–Sat: 9am – 6pm",
+      "form_cta":     "Book Now",
+      "time_slots":   ["9:00 AM","10:30 AM","12:00 PM","1:30 PM","3:00 PM","4:30 PM"]
+    }
+  }
+}
