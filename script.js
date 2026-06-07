@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────
-   script.js – Pawfect Grooming Studio
+   script.js – PAWSOME PETZ
    Loads content from data/site-config.json,
    builds the page, and wires up interactions.
 ───────────────────────────────────────────── */
@@ -33,6 +33,8 @@
   buildAbout(cfg);
   buildServices(cfg);
   buildWhyUs(cfg);
+  buildReviews(cfg);
+  buildLocation(cfg);
   buildContact(cfg);
   buildFooter(cfg);
 
@@ -53,25 +55,28 @@
 
 function buildNavbar(cfg) {
   const logo = qs("#nav-logo");
-  logo.innerHTML = `<span class="logo-emoji">${cfg.logo_emoji}</span> ${cfg.name.split(" ")[0]}`;
+  logo.innerHTML = `<span class="logo-emoji">${cfg.logo_emoji}</span> ${cfg.name}`;
   logo.href = "#hero";
 
   const links = qs("#nav-links");
   links.innerHTML = `
     <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#why">Why Us</a></li>
+    <li><a href="#services">Packages</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#location">Location</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-cta">${cfg.hero.cta_primary}</a></li>
+    <li><a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="nav-cta nav-whatsapp">💬 WhatsApp</a></li>
   `;
 
   const mob = qs("#mobile-menu");
   mob.innerHTML = `
     <a href="#about"    class="mobile-link">About</a>
-    <a href="#services" class="mobile-link">Services</a>
-    <a href="#why"      class="mobile-link">Why Us</a>
+    <a href="#services" class="mobile-link">Packages</a>
+    <a href="#reviews"  class="mobile-link">Reviews</a>
+    <a href="#location" class="mobile-link">Location</a>
     <a href="#contact"  class="mobile-link">Contact</a>
-    <a href="#contact"  class="mobile-link">📅 ${cfg.hero.cta_primary}</a>
+    <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="mobile-link mobile-link-wa">💬 Book via WhatsApp</a>
+    <a href="${cfg.phone_url}" class="mobile-link mobile-link-call">📞 Call ${cfg.phone_display}</a>
   `;
 }
 
@@ -79,16 +84,10 @@ function buildHero(cfg) {
   const h = cfg.hero;
   const section = qs("#hero");
 
-  // Background image with overlay
   section.style.backgroundImage =
-    `linear-gradient(rgba(30,10,20,0.52),rgba(30,10,20,0.52)), url('${cfg.background_image_url}')`;
+    `linear-gradient(rgba(20,8,15,0.60),rgba(20,8,15,0.60)), url('${cfg.background_image_url}')`;
   section.style.backgroundSize     = "cover";
   section.style.backgroundPosition = "center";
-
-  // Title: wrap last word in .accent
-  const words = h.heading.split(" ");
-  const lastWord = words.pop();
-  const headingHtml = `${words.join(" ")} <span class="accent">${lastWord}</span>`;
 
   const statsHtml = h.stats
     .map(s => `<div class="stat"><span class="stat-num">${s.number}</span><span class="stat-label">${s.label}</span></div>`)
@@ -96,10 +95,11 @@ function buildHero(cfg) {
 
   qs("#hero-content").innerHTML = `
     <div class="hero-badge">${cfg.logo_emoji} ${cfg.tagline}</div>
-    <h1 class="hero-title">${headingHtml}</h1>
+    <h1 class="hero-title">${h.heading}</h1>
     <p class="hero-sub">${h.subheading}</p>
     <div class="hero-btns">
-      <a href="#contact" class="btn-primary">📅 ${h.cta_primary}</a>
+      <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">💬 ${h.cta_primary}</a>
+      <a href="${cfg.phone_url}" class="btn-call">📞 ${h.cta_call}</a>
       <a href="#services" class="btn-outline">${h.cta_secondary}</a>
     </div>
     <div class="hero-stats">${statsHtml}</div>
@@ -117,7 +117,7 @@ function buildAbout(cfg) {
     <div class="about-img-wrap fade-in">
       <img
         src="${a.image_url}"
-        alt="Cute dog being groomed"
+        alt="Professional pet grooming by PAWSOME PETZ"
         loading="lazy"
         onerror="this.style.background='linear-gradient(135deg,#fce4f3,#ffeedd)';this.removeAttribute('src')"
       />
@@ -135,7 +135,10 @@ function buildAbout(cfg) {
       <p style="color:#777;line-height:1.75;margin-bottom:0.9rem;">${a.description_1}</p>
       <p style="color:#777;line-height:1.75;">${a.description_2}</p>
       <ul class="about-features">${featuresHtml}</ul>
-      <a href="#contact" class="btn-primary">${a.cta}</a>
+      <div class="about-cta-group">
+        <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">💬 Book via WhatsApp</a>
+        <a href="${cfg.phone_url}" class="btn-call">📞 Call Now</a>
+      </div>
     </div>
   `;
 }
@@ -143,14 +146,26 @@ function buildAbout(cfg) {
 function buildServices(cfg) {
   const colorClasses = ["color-0", "color-1", "color-2", "color-3"];
   const cardsHtml = cfg.services
-    .map((s, i) => `
-      <div class="service-card fade-in">
-        <div class="service-icon ${colorClasses[i % colorClasses.length]}">${s.icon}</div>
-        <h3>${s.title}</h3>
-        <p>${s.description}</p>
-        <div class="service-price">${s.price} <span>${s.unit}</span></div>
-      </div>
-    `)
+    .map((s, i) => {
+      const includesHtml = s.includes
+        .map(item => `<li><span class="include-check">✓</span>${item}</li>`)
+        .join("");
+      const featuredBadge = s.featured
+        ? `<div class="service-popular-badge">⭐ Most Popular</div>`
+        : "";
+      const featuredClass = s.featured ? " service-card--featured" : "";
+      return `
+        <div class="service-card${featuredClass} fade-in">
+          ${featuredBadge}
+          <div class="service-icon ${colorClasses[i % colorClasses.length]}">${s.icon}</div>
+          <h3>${s.title}</h3>
+          <p>${s.description}</p>
+          <div class="service-price">${s.price} <span>${s.unit}</span></div>
+          <ul class="service-includes">${includesHtml}</ul>
+          <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="btn-book-package">💬 Book This Package</a>
+        </div>
+      `;
+    })
     .join("");
 
   qs("#services-grid").innerHTML = cardsHtml;
@@ -170,6 +185,81 @@ function buildWhyUs(cfg) {
   qs("#why-grid").innerHTML = cardsHtml;
 }
 
+function buildReviews(cfg) {
+  const reviewsHtml = cfg.reviews
+    .map(r => {
+      const stars = "⭐".repeat(r.stars);
+      const initials = r.name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
+      return `
+        <div class="review-card fade-in">
+          <div class="review-header">
+            <div class="review-avatar">${initials}</div>
+            <div class="review-meta">
+              <strong class="review-name">${r.name}</strong>
+              <span class="review-pet">🐾 ${r.pet}</span>
+            </div>
+            <div class="review-stars">${stars}</div>
+          </div>
+          <p class="review-text">"${r.text}"</p>
+          <div class="review-source">
+            <img src="https://www.google.com/favicon.ico" alt="Google" width="14" height="14" loading="lazy" />
+            <span>Google Review</span>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  qs("#reviews-grid").innerHTML = reviewsHtml;
+}
+
+function buildLocation(cfg) {
+  qs("#location-content").innerHTML = `
+    <div class="location-card fade-in">
+      <div class="location-icon">🏠</div>
+      <h3>Doorstep Grooming</h3>
+      <p>We come to you! PAWSOME PETZ provides professional doorstep pet grooming across Bengaluru — no transportation stress for your pet.</p>
+      <div class="location-detail">
+        <span class="location-detail-icon">📍</span>
+        <div>
+          <strong>Service Area</strong>
+          <span>Bengaluru, Karnataka</span>
+        </div>
+      </div>
+      <div class="location-detail">
+        <span class="location-detail-icon">🏠</span>
+        <div>
+          <strong>Based At</strong>
+          <span>C Sector, Amruthnagar, Byatarayanapura, Bengaluru – 560024</span>
+        </div>
+      </div>
+    </div>
+    <div class="location-card fade-in">
+      <div class="location-icon">🕐</div>
+      <h3>Working Hours</h3>
+      <div class="hours-grid">
+        <div class="hours-row">
+          <span class="hours-day">Monday – Sunday</span>
+          <span class="hours-time">10:00 AM – 7:00 PM</span>
+        </div>
+        <div class="hours-status open">🟢 Open Today</div>
+      </div>
+      <a href="${cfg.maps_url}" target="_blank" rel="noopener noreferrer" class="btn-directions">
+        📍 Get Directions on Google Maps
+      </a>
+    </div>
+    <div class="location-card fade-in">
+      <div class="location-icon">📞</div>
+      <h3>Book an Appointment</h3>
+      <p>Call or WhatsApp Santosh directly to schedule your pet's grooming session at a convenient time.</p>
+      <div class="location-cta-group">
+        <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">💬 WhatsApp Us</a>
+        <a href="${cfg.phone_url}" class="btn-call">📞 ${cfg.phone_display}</a>
+      </div>
+    </div>
+  `;
+}
+
 function buildContact(cfg) {
   const c = cfg.contact;
 
@@ -177,7 +267,6 @@ function buildContact(cfg) {
     .map(t => `<option>${t}</option>`)
     .join("");
 
-  // Build service options from services list
   const serviceOptions = cfg.services
     .map(s => `<option>${s.title} — ${s.price}</option>`)
     .join("");
@@ -186,6 +275,22 @@ function buildContact(cfg) {
     <div class="section-tag">Get in Touch</div>
     <h2 class="section-title">${c.heading}</h2>
     <p>${c.subheading}</p>
+
+    <div class="contact-cta-group">
+      <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="btn-whatsapp btn-contact-wa">
+        💬 Book via WhatsApp
+      </a>
+      <a href="${cfg.phone_url}" class="btn-call btn-contact-call">
+        📞 Call ${cfg.phone_display}
+      </a>
+    </div>
+
+    <div class="contact-detail">
+      <div class="contact-detail-icon">👤</div>
+      <div class="contact-detail-text">
+        <strong>Contact Person</strong><span>${c.contact_name}</span>
+      </div>
+    </div>
     <div class="contact-detail">
       <div class="contact-detail-icon">📍</div>
       <div class="contact-detail-text">
@@ -195,13 +300,8 @@ function buildContact(cfg) {
     <div class="contact-detail">
       <div class="contact-detail-icon">📞</div>
       <div class="contact-detail-text">
-        <strong>Phone</strong><span>${c.phone}</span>
-      </div>
-    </div>
-    <div class="contact-detail">
-      <div class="contact-detail-icon">✉️</div>
-      <div class="contact-detail-text">
-        <strong>Email</strong><span>${c.email}</span>
+        <strong>Phone / WhatsApp</strong>
+        <span><a href="${cfg.phone_url}" style="color:inherit;text-decoration:none;">${c.phone}</a></span>
       </div>
     </div>
     <div class="contact-detail">
@@ -210,38 +310,45 @@ function buildContact(cfg) {
         <strong>Hours</strong><span>${c.hours}</span>
       </div>
     </div>
+    <div class="contact-detail">
+      <div class="contact-detail-icon">📍</div>
+      <div class="contact-detail-text">
+        <strong>Google Maps</strong>
+        <span><a href="${cfg.maps_url}" target="_blank" rel="noopener noreferrer" style="color:var(--pink-dark);font-weight:700;">Open in Google Maps →</a></span>
+      </div>
+    </div>
   `;
 
   qs("#contact-form-wrap").innerHTML = `
     <div class="contact-form fade-in">
-      <h3>${cfg.logo_emoji} Let's Get Your Pup Booked!</h3>
+      <h3>${cfg.logo_emoji} Quick Booking Request</h3>
+      <p style="font-size:0.85rem;color:#888;margin-bottom:1.2rem;">Or WhatsApp for instant response.</p>
       <form id="booking-form" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="ownerName">Your Name</label>
-            <input type="text" id="ownerName" placeholder="Jane Smith" required />
+            <input type="text" id="ownerName" placeholder="Your name" required />
           </div>
           <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="(555) 000-0000" required />
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required />
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
-            <label for="dogName">Dog's Name</label>
-            <input type="text" id="dogName" placeholder="Buddy" required />
+            <label for="dogName">Pet's Name</label>
+            <input type="text" id="dogName" placeholder="Your pet's name" required />
           </div>
           <div class="form-group">
-            <label for="breed">Breed</label>
-            <input type="text" id="breed" placeholder="Golden Retriever" />
+            <label for="breed">Breed / Species</label>
+            <input type="text" id="breed" placeholder="e.g. Shih Tzu, Persian Cat" />
           </div>
         </div>
         <div class="form-group">
-          <label for="service">Service</label>
+          <label for="service">Service Package</label>
           <select id="service" required>
-            <option value="" disabled selected>Select a service…</option>
+            <option value="" disabled selected>Select a package…</option>
             ${serviceOptions}
-            <option>Full Grooming Package (All Services)</option>
           </select>
         </div>
         <div class="form-row">
@@ -259,14 +366,13 @@ function buildContact(cfg) {
         </div>
         <div class="form-group">
           <label for="notes">Special Notes (optional)</label>
-          <textarea id="notes" placeholder="Allergies, special needs, or extra info…"></textarea>
+          <textarea id="notes" placeholder="Allergies, nervous pet, special needs…"></textarea>
         </div>
         <button type="submit" class="btn-submit">${cfg.logo_emoji} ${c.form_cta}</button>
       </form>
     </div>
   `;
 
-  // Set min date on the date input
   requestAnimationFrame(() => {
     const dateInput = document.getElementById("date");
     if (dateInput) dateInput.min = new Date().toISOString().split("T")[0];
@@ -277,6 +383,19 @@ function buildFooter(cfg) {
   qs("#footer-logo").textContent = `${cfg.logo_emoji} ${cfg.name}`;
   qs("#footer-year").textContent = new Date().getFullYear();
   qs("#footer-name").textContent = cfg.name;
+
+  qs("#footer-details").innerHTML = `
+    <div class="footer-business-info">
+      <p><strong>📍</strong> ${cfg.contact.address}</p>
+      <p><strong>📞</strong> <a href="${cfg.phone_url}" style="color:#ccc;">${cfg.phone_display}</a></p>
+      <p><strong>🕐</strong> Monday – Sunday: 10:00 AM – 7:00 PM</p>
+      <p class="footer-gstin">GSTIN: ${cfg.footer.gstin} | Trade Name: ${cfg.footer.trade_name} | Legal Name: ${cfg.footer.legal_name}</p>
+    </div>
+    <div class="footer-links-cta">
+      <a href="${cfg.whatsapp_url}" target="_blank" rel="noopener noreferrer" class="footer-cta-wa">💬 WhatsApp</a>
+      <a href="${cfg.maps_url}" target="_blank" rel="noopener noreferrer" class="footer-cta-maps">📍 Google Maps</a>
+    </div>
+  `;
 }
 
 /* ═══════════════════════════════════════════
@@ -299,7 +418,6 @@ function initHamburger() {
     menu.classList.toggle("open");
   });
 
-  // Close on link click (delegated)
   menu.addEventListener("click", e => {
     if (e.target.tagName === "A") {
       btn.classList.remove("open");
@@ -315,7 +433,6 @@ function initFadeIn() {
     });
   }, { threshold: 0.1 });
 
-  // Observe .fade-in elements once DOM is fully populated
   requestAnimationFrame(() => {
     document.querySelectorAll(".fade-in").forEach(el => observer.observe(el));
   });
@@ -330,7 +447,6 @@ function initScrollTop() {
 }
 
 function initBookingForm() {
-  // Form might not be in DOM yet; use event delegation on #contact
   qs("#contact").addEventListener("submit", e => {
     if (e.target.id !== "booking-form") return;
     e.preventDefault();
@@ -349,7 +465,7 @@ function initBookingForm() {
 
     if (!valid) return;
 
-    showToast("🐾 Booking request sent! We'll confirm soon.");
+    showToast("🐾 Booking request sent! Santosh will confirm your slot soon.");
     e.target.reset();
   });
 }

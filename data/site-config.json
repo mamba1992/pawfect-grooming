@@ -1,83 +1,176 @@
 {
   "business": {
-    "name": "Pawfect Grooming Studio",
-    "tagline": "Premium Dog Grooming",
+    "name": "PAWSOME PETZ",
+    "tagline": "Trusted Pet Grooming at Your Doorstep, Bengaluru",
     "logo_emoji": "🐾",
     "background_image_url": "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1800&auto=format&fit=crop&q=80",
+    "whatsapp_url": "https://wa.me/918959290372?text=Hi%20Santosh%2C%20I%27d%20like%20to%20book%20a%20grooming%20appointment%20for%20my%20pet%20at%20PAWSOME%20PETZ.%20Please%20let%20me%20know%20your%20available%20slots.",
+    "phone_url": "tel:+918959290372",
+    "phone_display": "+91 89592 90372",
+    "maps_url": "https://maps.app.goo.gl/AhYhKkxK57H36goj7",
     "hero": {
-      "heading": "Your Pup Deserves to Look Pawfect",
-      "subheading": "Professional, gentle grooming services tailored to your furry best friend. We treat every dog like our own.",
-      "cta_primary": "Book an Appointment",
-      "cta_secondary": "See Our Services",
+      "heading": "Professional Pet Grooming at Your Doorstep",
+      "subheading": "Gentle, hygienic, and stress-free grooming for dogs, puppies, cats & kittens — by Santosh, trusted by pet parents across Bengaluru.",
+      "cta_primary": "Book via WhatsApp",
+      "cta_secondary": "See Our Packages",
+      "cta_call": "Call Now",
       "stats": [
-        { "number": "1,200+", "label": "Happy Pups Groomed" },
-        { "number": "5★",     "label": "Average Rating"     },
-        { "number": "6 yrs",  "label": "Of Experience"      }
+        { "number": "5.0★", "label": "Google Rating"     },
+        { "number": "33+",  "label": "Happy Reviews"     },
+        { "number": "7",    "label": "Days a Week"       }
       ]
     },
     "about": {
-      "heading": "A Salon Built with Love & Care",
-      "description_1": "At Pawfect Grooming Studio, we believe every dog deserves to feel fresh, clean, and beautiful. Our experienced groomers treat every pup with patience, kindness, and expert care — because happy dogs make happy owners.",
-      "description_2": "We use only pet-safe, eco-friendly products and keep our studio calm and stress-free so your furry friend always leaves with a wagging tail.",
+      "heading": "Meet Santosh — Your Trusted Pet Groomer",
+      "description_1": "At PAWSOME PETZ, Santosh brings professional, gentle, and hygienic pet grooming right to your home. From playful puppies and curious kittens to senior dogs and nervous pets — every animal receives calm, patient, and personalized care.",
+      "description_2": "Trusted by repeat customers across Bengaluru, Santosh uses sanitized tools, pet-safe products, and a loving approach that keeps your furry family members comfortable, clean, and happy after every session.",
       "image_url": "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=800&auto=format&fit=crop&q=80",
-      "image_badge_emoji": "🏆",
-      "image_badge_title": "Top Rated",
-      "image_badge_subtitle": "Studio in Town",
+      "image_badge_emoji": "⭐",
+      "image_badge_title": "5.0 Rated",
+      "image_badge_subtitle": "33 Google Reviews",
       "features": [
-        { "icon": "✅", "text": "Certified & experienced groomers"          },
-        { "icon": "🌿", "text": "Pet-safe, eco-friendly products only"       },
-        { "icon": "🏠", "text": "Calm, stress-free studio environment"       },
-        { "icon": "❤️", "text": "Personalized care for every breed"          }
+        { "icon": "🏠", "text": "Doorstep grooming — we come to you"          },
+        { "icon": "🌿", "text": "Pet-safe, hygienic products & sanitized tools" },
+        { "icon": "🐱", "text": "Dogs, cats, puppies & kittens welcome"         },
+        { "icon": "❤️", "text": "Gentle care for nervous & senior pets"         }
       ],
       "cta": "Book an Appointment"
     },
     "services": [
       {
         "icon":        "🛁",
-        "title":       "Bath & Blow Dry",
-        "description": "A thorough, relaxing bath with premium shampoo and conditioner, followed by a gentle blow-dry that leaves your dog's coat soft and shiny.",
-        "price":       "$35",
-        "unit":        "/ session"
+        "title":       "Spa Bath",
+        "description": "A relaxing full bath with shampoo & conditioner, blow dry, nail clipping, ear & eye cleaning, paw massage, and combing.",
+        "price":       "₹1,099",
+        "unit":        "/ session",
+        "featured":    false,
+        "includes": [
+          "Bath with Shampoo & Conditioner",
+          "Blow Dry",
+          "Nail Clipping",
+          "Ear Cleaning",
+          "Eye Cleaning",
+          "Paw Massage",
+          "Combing / Brushing"
+        ]
       },
       {
         "icon":        "✂️",
-        "title":       "Haircut & Styling",
-        "description": "Breed-specific cuts or custom styles crafted by our expert groomers to make your pup look runway-ready every time.",
-        "price":       "$55",
-        "unit":        "/ session"
+        "title":       "Hair Styling / Zero Cut",
+        "description": "Full body haircut, trimming or zero cut with sanitary clipping, nail care, ear & eye cleaning, and brushing.",
+        "price":       "₹1,199",
+        "unit":        "/ session",
+        "featured":    false,
+        "includes": [
+          "Full Body Haircut / Trimming / Zero Cut",
+          "Sanitary Cutting (Under Face, Ears & Paws)",
+          "Nail Clipping",
+          "Ear Cleaning",
+          "Eye Cleaning",
+          "Combing & Brushing"
+        ]
       },
       {
-        "icon":        "🐾",
-        "title":       "Nail Trimming",
-        "description": "Gentle and precise nail clipping to keep your dog comfortable and protect your floors. Includes a soothing paw massage.",
-        "price":       "$18",
-        "unit":        "/ session"
+        "icon":        "🌟",
+        "title":       "Basic Grooming",
+        "description": "A thorough grooming session with bath, blow dry, face haircut, sanitary trim, teeth cleaning, paw massage, and more.",
+        "price":       "₹1,499",
+        "unit":        "/ session",
+        "featured":    false,
+        "includes": [
+          "Bath with Shampoo & Conditioner",
+          "Blow Dry",
+          "Face Haircutting",
+          "Sanitary Trim",
+          "Nail Clipping",
+          "Ear Cleaning",
+          "Eye Cleaning",
+          "Teeth Cleaning / Mouth Spray",
+          "Paw Massage",
+          "Combing / Brushing"
+        ]
       },
       {
-        "icon":        "👂",
-        "title":       "Ear Cleaning",
-        "description": "Safe and thorough ear cleaning to prevent infections and keep your pup's ears healthy, fresh, and irritation-free.",
-        "price":       "$15",
-        "unit":        "/ session"
+        "icon":        "👑",
+        "title":       "Full Service",
+        "description": "The complete grooming experience — bath, full body trim, all cleaning & hygiene care, teeth cleaning, and paw massage.",
+        "price":       "₹1,999",
+        "unit":        "/ session",
+        "featured":    true,
+        "includes": [
+          "Bath with Shampoo & Conditioner",
+          "Blow Dry",
+          "Full Body Trimming / Zero Haircut",
+          "Eye Cleaning",
+          "Ear Cleaning",
+          "Sanitary Trim",
+          "Nail Clipping",
+          "Teeth Cleaning / Mouth Spray",
+          "Paw Massage",
+          "Combing / Brushing"
+        ]
       }
     ],
     "why_us": [
-      { "emoji": "🐕", "title": "Breed-Specific Care",    "description": "Every breed is different. We customize our approach for your dog's unique coat and temperament."                       },
-      { "emoji": "🧴", "title": "Safe Products Only",     "description": "We use gentle, toxin-free, vet-approved shampoos and conditioners suitable for all skin types."                        },
-      { "emoji": "⏰", "title": "Flexible Scheduling",    "description": "We work around your schedule with morning, afternoon, and weekend slots available."                                    },
-      { "emoji": "📱", "title": "Progress Updates",       "description": "We send you cute photos and updates while your pup is getting pampered in our studio."                                  },
-      { "emoji": "💰", "title": "Transparent Pricing",    "description": "No hidden fees, ever. Flat, honest pricing so you always know exactly what to expect."                                  },
-      { "emoji": "🏅", "title": "Certified Groomers",     "description": "All our staff are professionally certified with years of hands-on grooming experience."                                 }
+      { "emoji": "🏠", "title": "Doorstep Grooming",        "description": "We come to your home — no travel stress for your pet. Convenient, comfortable, and hassle-free."                 },
+      { "emoji": "🐾", "title": "Gentle & Patient",         "description": "Even nervous, anxious, or senior pets are handled with calm patience and genuine care."                             },
+      { "emoji": "🧴", "title": "Safe & Hygienic",          "description": "Pet-safe products and sanitized tools for every session — clean, safe, and professional."                           },
+      { "emoji": "🐱", "title": "All Pets Welcome",         "description": "Dogs, puppies, cats, and kittens — all breeds, all ages, all temperaments."                                        },
+      { "emoji": "⭐", "title": "5-Star Rated",             "description": "Trusted by 33+ happy pet parents on Google with a perfect 5.0 star rating."                                        },
+      { "emoji": "🔄", "title": "Trusted by Repeat Clients","description": "Our clients keep coming back — some for over 1.5 years — because quality and care never wavers."                   }
+    ],
+    "reviews": [
+      {
+        "name": "Racheal Jane",
+        "stars": 5,
+        "text": "Santhosh groomed our 11-year-old Husky at home and did an excellent job — bathing, blow drying, nail clipping, paw trimming, and ear cleaning. He handled her wonderfully and we were extremely happy with the service.",
+        "pet": "Husky"
+      },
+      {
+        "name": "Rebecca Shanu",
+        "stars": 5,
+        "text": "The groomer was exceptionally kind and gentle with Zara. He handled her with patience and care, making her comfortable throughout the session. We are completely satisfied with the grooming service.",
+        "pet": "Dog"
+      },
+      {
+        "name": "Dipika Bhowmick",
+        "stars": 5,
+        "text": "My Shih Tzu is usually very aggressive during grooming, but Santosh handles him calmly and patiently. He has now become our permanent groomer.",
+        "pet": "Shih Tzu"
+      },
+      {
+        "name": "Dianna Peters",
+        "stars": 5,
+        "text": "Really happy with the service. Home grooming makes the process stress-free for my pet. Professional, gentle, reliable, and thorough every time.",
+        "pet": "Dog"
+      },
+      {
+        "name": "Monika Agrawal",
+        "stars": 5,
+        "text": "Santosh has been grooming my Shih Tzu for over 1.5 years. He sanitizes all tools, follows instructions carefully, and consistently delivers excellent grooming results.",
+        "pet": "Shih Tzu"
+      },
+      {
+        "name": "Simran Singh",
+        "stars": 5,
+        "text": "He was very patient and gentle with my two-month-old kitten. The care and professionalism were outstanding. Highly recommended.",
+        "pet": "Kitten"
+      }
     ],
     "contact": {
-      "heading":      "Book an Appointment",
-      "subheading":   "Ready to give your pup some well-deserved pampering? Fill in the form and we'll confirm your slot within 24 hours!",
-      "address":      "42 Bark Street, Dogwood Hills",
-      "phone":        "(555) 123-PAWS",
-      "email":        "hello@pawfectgrooming.com",
-      "hours":        "Mon–Sat: 9am – 6pm",
-      "form_cta":     "Book Now",
-      "time_slots":   ["9:00 AM","10:30 AM","12:00 PM","1:30 PM","3:00 PM","4:30 PM"]
+      "heading":      "Book Your Pet's Grooming Session",
+      "subheading":   "Call or WhatsApp Santosh to schedule a convenient doorstep grooming session. We confirm your slot quickly!",
+      "contact_name": "Santosh",
+      "address":      "C Sector, Amruthnagar, Byatarayanapura, Bengaluru, Karnataka 560024",
+      "phone":        "+91 89592 90372",
+      "hours":        "Monday – Sunday: 10:00 AM – 7:00 PM",
+      "form_cta":     "Send Booking Request",
+      "time_slots":   ["10:00 AM","11:00 AM","12:00 PM","1:00 PM","2:00 PM","3:00 PM","4:00 PM","5:00 PM","6:00 PM"]
+    },
+    "footer": {
+      "gstin":        "29GXZPK7586M1ZT",
+      "trade_name":   "PAWSOME PETZ",
+      "legal_name":   "GITHA KHANDEKAR"
     }
   }
 }
